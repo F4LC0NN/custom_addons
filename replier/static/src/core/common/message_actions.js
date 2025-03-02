@@ -13,7 +13,7 @@ messageActionsRegistry.add("reply-to", {
         const thread = toRaw(component.props.thread);
         // I do not const message here because 
         // I don't need the raw object of message to call openComposer()
-        component.props.message.openComposer();
+        if (!thread.channel_type) component.props.message.openComposer();
         component.props.messageToReplyTo.toggle(thread, message);
     },
     sequence: (component) => (component.props.thread?.eq(component.store.inbox) ? 55 : 20),
