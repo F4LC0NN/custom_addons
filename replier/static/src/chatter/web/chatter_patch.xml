@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <Composer position="attributes">
+            <attribute name="messageToReplyTo">messageToReplyTo</attribute>
+            <attribute name="onDiscardCallback">() => messageToReplyTo.cancel()</attribute>
+            <attribute name="type">messageToReplyTo?.message ? (messageToReplyTo.message.is_note ? 'note' : 'message') : state.composerType</attribute>
+        </Composer>
+
+        <Thread position="attributes">
+            <attribute name="messageToReplyTo">messageToReplyTo</attribute>
+        </Thread>
+    </t>
+</templates>
